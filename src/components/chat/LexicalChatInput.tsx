@@ -38,7 +38,7 @@ const CustomMenuItem = forwardRef<
   HTMLLIElement,
   BeautifulMentionsMenuItemProps
 >(({ selected, item, ...props }, ref) => {
-  const isPrompt = typeof item !== "string" && (item as any)?.type === "prompt";
+  const isPrompt = typeof item !== "string" && item.data?.type === "prompt";
   const label = isPrompt ? "Prompt" : "App";
   const value = typeof item === "string" ? item : (item as any)?.value;
   return (
@@ -52,7 +52,13 @@ const CustomMenuItem = forwardRef<
       ref={ref}
     >
       <div className="flex items-center space-x-2 min-w-0">
-        <span className="px-2 py-0.5 text-xs font-medium bg-primary text-primary-foreground rounded-md flex-shrink-0">
+        <span
+          className={`px-2 py-0.5 text-xs font-medium rounded-md flex-shrink-0 ${
+            isPrompt
+              ? "bg-purple-500 text-white"
+              : "bg-primary text-primary-foreground"
+          }`}
+        >
           {label}
         </span>
         <span className="truncate text-sm">{value}</span>
