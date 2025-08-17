@@ -12,6 +12,10 @@
     "node": ">=20"
   },
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start:web": "next start",
+    
     "clean": "rm -rf out && rm -rf scaffold/node_modules",
     "start": "electron-forge start",
     "dev:engine": "DYAD_ENGINE_URL=http://localhost:8080/v1 npm start",
@@ -41,6 +45,7 @@
     "e2e": "playwright test",
     "e2e:shard": "playwright test --shard"
   },
+
   "keywords": [],
   "author": {
     "name": "Will Chen",
